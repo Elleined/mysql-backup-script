@@ -14,7 +14,7 @@ set backup_name=all_db_backup_%backup_name_date_time%
 set backup_log_name=all_db_backup_log_%backup_name_date_time%
 
 rem ***backup creation***
-mysqldump --user=%mysql_user% --password=%mysql_password% --all-databases --routines --events --result-file="%backup_path%\%backup_name%.sql"
+mysqldump --user=%mysql_user% --password=%mysql_password% --all-databases --routines --triggers --events --result-file="%backup_path%\%backup_name%.sql"
 if %ERRORLEVEL% neq 0 (
     (echo Backup failed: error during dump creation) >> "%backup_path%\%backup_log_name%.txt"
 ) else (echo Backup successful) >> "%backup_path%\%backup_log_name%.txt"
