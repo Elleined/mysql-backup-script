@@ -14,10 +14,10 @@ execute the .bat file script to backup your database.
    - Save it with .sh as file extension
 ```bash
 Template
-*/1 * * * * /usr/bin/mysqldump -u [username] -p[password] [database] --routines --triggers --events > /path/to/backup/backup_$(date +%F.%H%M%S).sql
+/usr/bin/mysqldump -u [username] -p[password] [database] --routines --triggers --events > /path/to/backup/backup_$(date +%F.%H%M%S).sql
 
 Example
-*/1 * * * * /usr/bin/mysqldump -u root -pp455w0rd abs_db --routines --triggers --events > /home/denielle/backup_$(date +%F.%H%M%S).sql
+/usr/bin/mysqldump -u root -pp455w0rd abs_db --routines --triggers --events > /home/denielle/backup_$(date +%F.%H%M%S).sql
 ```
 *This cron will run every 1 minute. !REMINDER! that the specified CRON can be change! Use the link below to generate a new cron based on what your need*
 
