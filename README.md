@@ -15,7 +15,7 @@ execute the .bat file script to backup your database.
 ```bash
 Template
 
-#!/bin/bash
+7
 /usr/bin/mysqldump -u [username] -p[password] [database] --routines --triggers --events > /path/to/backup/backup_$(date +%F.%H%M%S).sql
 
 Example
