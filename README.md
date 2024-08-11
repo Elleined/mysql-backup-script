@@ -8,31 +8,53 @@ This MySQL Automatic Backup scripts for your MySQL server databases you can copy
 execute the .bat file script to backup your database.
 
 ## For Linux
-1. Install first the gzip for backup compression because sometimes backup we might may lose data when we copy or paste the .sql raw file itself
-```
-sudo apt install gzip
-```
-
-2. Create folder
-- Go first inside the /opt folder then run this command
+1. Create a .sh file. 
+   - Open the text editor
+   - Paste this command (!!! DONT FORGET TO MODIFY THE FILES BASED ON YOUR NEEDS OR ELSE IT WILL NOT WORK !!!)
+   - Save it with .sh as file extension
 ```bash
-sudo mkdir mysqlBackup
+Template
+*/1 * * * * /usr/bin/mysqldump -u [username] -p[password] [database] --routines --triggers --events > /path/to/backup/backup_$(date +%F.%H%M%S).sql
+
+Example
+*/1 * * * * /usr/bin/mysqldump -u root -pp455w0rd abs_db --routines --triggers --events > /home/denielle/backup_$(date +%F.%H%M%S).sql
+```
+*This cron will run every 1 minute. !REMINDER! that the specified CRON can be change! Use the link below to generate a new cron based on what your need*
+
+2. Make the .sh file executable
+   - When doing this first open files
+   - Locate the folder where you save the .sh file 
+   - Right click > Open in terminal
+```bash
+Template
+chmod +x ./{fileName.sh}
+
+Example
+chmod +x ./mysql-backup-script.sh
 ```
 
 3. Open the built in CRON in linux
 ```
-sudo crontab -e
+crontab -e
 ```
 
-4. Add this CRON at the end of the file
+4. Paste this command at the very end! of the file and the file should look like this.
 ```bash
-*/5 * * * * mysqldump -u [username] -p[password] [database] --routines --triggers --events | gzip > /opt/mysqlBackup/backup_$(date +%F.%H%M%S).sql.gz
+Template
+# m h  dom mon dow   command
+*/1 * * * * /bin/bash /path/to/mysql-backup-script.sh 
+
+Example
+# m h  dom mon dow   command
+*/1 * * * * /bin/bash /home/denielle/mysql-backup-script.sh 
 ```
-This cron will run every 5 minute REMINDER that the specified CRON can be change!
-Use the link below to generate a new cron based on what your need
+
+5. After you edit the command in step 1 and run all the commands. 
+The backup file should be present in target location. 
+If the .sql file backup is missing you done something wrong.
 
 # Useful Links
-- Datetime naming
+- Datetime naming for windows
 https://youtu.be/1GUCJKmJuAo
 
 - Backup and Restore in Linux
