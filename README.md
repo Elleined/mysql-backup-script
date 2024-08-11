@@ -17,7 +17,7 @@ Template
 /usr/bin/mysqldump -u [username] -p[password] [database] --routines --triggers --events > /path/to/backup/backup_$(date +%F.%H%M%S).sql
 
 Example
-/usr/bin/mysqldump -u root -pp455w0rd abs_db --routines --triggers --events > /home/denielle/backup_$(date +%F.%H%M%S).sql
+/usr/bin/mysqldump -u root -pp455w0rd abs_db --routines --triggers --events > $HOME/backup_$(date +%F.%H%M%S).sql
 ```
 *This cron will run every 1 minute. !REMINDER! that the specified CRON can be change! Use the link below to generate a new cron based on what your need*
 
@@ -46,7 +46,7 @@ Template
 
 Example
 # m h  dom mon dow   command
-*/1 * * * * /bin/bash /home/denielle/mysql-backup-script.sh 
+*/1 * * * * /bin/bash $HOME/mysql-backup-script.sh 
 ```
 
 5. After you edit the command in step 1 and run all the commands. 
@@ -61,7 +61,8 @@ https://youtu.be/1GUCJKmJuAo
 https://www.arubacloud.com/tutorial/how-to-schedule-a-mysql-database-backup-on-ubuntu.aspx
 
 - CRON Generator
-https://crontab.cronhub.io/
+  - https://crontab.cronhub.io/
+  - https://www.freeformatter.com/cron-expression-generator-quartz.html
 
 
 
