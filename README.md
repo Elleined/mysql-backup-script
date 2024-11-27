@@ -2,6 +2,7 @@
 This MySQL Automatic Backup scripts for your MySQL server databases you can copy and paste the code and make sure to watch the reference video to fully understand the code then try to modify for your needs.
 
 ## For Windows
+- Change the username, password, and backup path
 - !!! DONT FORGET TO MODIFY THE FILES BASED ON YOUR NEEDS OR ELSE IT WILL NOT WORK !!! 
 - To use this scripts you can just double click the .bat file and everything should works fine if you configure correctly you should see the backup sql file in the targeted folder
 - To automate the backup you can run a schedule task in your Task Scheduler that will automatically 
