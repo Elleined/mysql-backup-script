@@ -5,9 +5,12 @@ This MySQL Automatic Backup scripts for your MySQL server databases you can copy
 - Change the username, password, and backup path
 - !!! DONT FORGET TO MODIFY THE FILES BASED ON YOUR NEEDS OR ELSE IT WILL NOT WORK !!!
    - Change the cd directory of MySQL at the top
-   - Change the database name
-   - Change the backup file directory
-   - Change the backup file name
+   - Change the ${USERNAME}
+   - Change the ${PASSWORD}
+   - Change the ${BACKUP_PATH}
+   - Change the ${BACKUP_NAME}
+   - Change the ${DATABASE_NAME}
+   - Change the ${MYSQL_HOST_NAME_OR_IP_ADDRESS}
 - To use this scripts you can just double click the .bat file and everything should works fine if you configure correctly you should see the backup sql file in the targeted folder
 - To automate the backup you can run a schedule task in your Task Scheduler that will automatically 
 - execute the .bat file script to backup your database.
@@ -20,7 +23,6 @@ This MySQL Automatic Backup scripts for your MySQL server databases you can copy
 ```bash
 Template
 
-7
 /usr/bin/mysqldump -u [username] -p[password] [database] --routines --triggers --events > /path/to/backup/backup_$(date +%F.%H%M%S).sql
 
 Example
