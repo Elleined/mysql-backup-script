@@ -1,55 +1,19 @@
 # mysql-backup-script
-This MySQL Automatic Backup scripts for your MySQL server databases you can copy and paste the code and make sure to watch the reference video to fully understand the code then try to modify for your needs.
+Automated Backup Scripts for you MySQL Server Databases.
 
 ## For Windows
-- Change the username, password, and backup path
-- !!! DONT FORGET TO MODIFY THE FILES BASED ON YOUR NEEDS OR ELSE IT WILL NOT WORK !!!
-   - Change the cd directory of MySQL at the top
-   - Change the ${USERNAME}
-   - Change the ${PASSWORD}
-   - Change the ${BACKUP_PATH}
-   - Change the ${BACKUP_NAME}
-   - Change the ${DATABASE_NAME}
-   - Change the ${MYSQL_HOST_NAME_OR_IP_ADDRESS}
-- To use this scripts you can just double click the .bat file and everything should works fine if you configure correctly you should see the backup sql file in the targeted folder
-- To automate the backup you can run a schedule task in your Task Scheduler that will automatically 
-- execute the .bat file script to backup your database.
+1. Change the script variables with (...) values based on your needs
+2. To use this scripts you can just double click the .bat file and everything should works fine if you configure correctly you should see the backup sql file in the targeted folder
+3. To automate the backup you can run a schedule task in your Task Scheduler that will automatically execute the .bat file script to backup your database.
 
 ## For Linux
-1. Create a .sh file. 
-   - Open the text editor
-   - Paste this command (!!! DONT FORGET TO MODIFY THE FILES BASED ON YOUR NEEDS OR ELSE IT WILL NOT WORK !!!)
-   - Save it with .sh as file extension
-```bash
-Template
-
-/usr/bin/mysqldump -u [username] -p[password] [database] --routines --triggers --events > /path/to/backup/backup_$(date +%F.%H%M%S).sql
-
-Example
-
-#!/bin/bash
-/usr/bin/mysqldump -u root -pp455w0rd abs_db --routines --triggers --events > $HOME/backup_$(date +%F.%H%M%S).sql
-```
-*This cron will run every 1 minute. !REMINDER! that the specified CRON can be change! Use the link below to generate a new cron based on what your need*
-
-2. Make the .sh file executable
-   - When doing this first open files
-   - Locate the folder where you save the .sh file 
-   - Right click > Open in terminal
-```bash
-Template
-chmod +x ./{fileName.sh}
-
-Example
-chmod +x ./mysql-backup-script.sh
-```
-
-3. Open the built in CRON in linux
+1. Change the script variables with (...) values based on your needs
+2. Open linux built-in cron scheduler
 ```
 crontab -e
 ```
 
-4. Paste this command at the very end! of the file and the file should look like this.
+3. Paste this command at the very end! of the file and the file should look like this.
 ```bash
 Template
 # m h  dom mon dow   command
@@ -59,8 +23,9 @@ Example
 # m h  dom mon dow   command
 */1 * * * * /bin/bash $HOME/mysql-backup-script.sh 
 ```
+*This cron will run every 1 minute. !REMINDER! that the specified CRON can be change! Use the link below to generate a new cron based on what your need*
 
-5. After you edit the command in step 1 and run all the commands. 
+4. After you edit the command in step 1 and run all the commands. 
 The backup file should be present in target location. 
 If the .sql file backup is missing you done something wrong.
 
